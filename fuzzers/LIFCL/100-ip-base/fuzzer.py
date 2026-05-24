@@ -45,7 +45,30 @@ cfgs = [
             ("LRAM_CORE_R15C74", "LRAM_CORE"),
             ("LRAM_CORE_R16C74", "LRAM_CORE"),
         ]
-    )
+    ),
+    # LIFCL-33 (WLCSP84) site list derived from
+    # database/LIFCL/LIFCL-33/tilegrid.json:
+    #   GPLL_LLC @ R81C0  -> "PLL_LLC"
+    #   PMU      @ R0C41  -> "PMU_CORE_R1C41"
+    #   I2C_EFB_3 @ R0C25 -> "I2CFIFO_CORE_R1C25"
+    #   EBRs    @ R11C{10..21} -> use mid-row tile
+    #   LRAMs   @ R{4,20,34,47,65}C51 -> 5 instances
+    # WLCSP84 has no DPHY / SGMIICDR / PCIE -> those rows omitted.
+    (fuzzconfig.FuzzConfig(job="IPADDR33", device="LIFCL-33", sv="ip_33.v", tiles=[]),
+        [
+            ("PLL_LLC", "PLL_CORE"),
+            ("PMU_CORE_R1C41", "PMU_CORE"),
+            ("I2CFIFO_CORE_R1C25", "I2CFIFO_CORE"),
+            ("EBR_CORE_R10C10", "EBR_CORE_WID0"),
+            ("EBR_CORE_R10C10", "EBR_CORE_WID1"),
+            ("EBR_CORE_R10C10", "EBR_CORE_WID2047"),
+            ("LRAM_CORE_R4C51", "LRAM_CORE"),
+            ("LRAM_CORE_R20C51", "LRAM_CORE"),
+            ("LRAM_CORE_R34C51", "LRAM_CORE"),
+            ("LRAM_CORE_R47C51", "LRAM_CORE"),
+            ("LRAM_CORE_R65C51", "LRAM_CORE"),
+        ]
+    ),
 ]
 
 # Config to make sure we get at least one IP bit set
