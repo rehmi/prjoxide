@@ -59,6 +59,14 @@ tap_frame_to_col_17 = {
     28: 50,
     34: 62
 }
+# LIFCL-33 has only 2 TAP frame slots (vs 4 on -17/-40); 6 frames each = 12
+# total TAP frames (chip.rs::tap_frame_count). Column positions are an
+# initial best-guess mirrored on -40's inner two TAP cols (14, 38) for the
+# max_col=51 grid. Real fuzzer probing (Task 1.3) should confirm/refine.
+tap_frame_to_col_33 = {
+    16: 14,
+    22: 38,
+}
 
 def get_tf2c(dev):
     if dev == "LFCPNX-100":
@@ -67,6 +75,8 @@ def get_tf2c(dev):
         return tap_frame_to_col_40
     elif dev == "LIFCL-17":
         return tap_frame_to_col_17
+    elif dev == "LIFCL-33":
+        return tap_frame_to_col_33
     else:
         assert False
 

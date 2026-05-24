@@ -49,6 +49,22 @@
                     "variants": {
                         "": {"idcode": 17760323}
                     }
+                },
+                "LIFCL-33": {
+                    "packages": ["WLCSP84"],
+                    "idcode": 17801283,
+                    "frames": 5344,
+                    "bits_per_frame": 986,
+                    "pad_bits_after_frame": 0,
+                    "pad_bits_before_frame": 4,
+                    "frame_ecc_bits": 14,
+                    "max_row" : 83,
+                    "max_col" : 51,
+                    "col_bias" : 0,
+                    "fuzz": true,
+                    "variants": {
+                        "": {"idcode": 17801283}
+                    }
                 }
             }
         },

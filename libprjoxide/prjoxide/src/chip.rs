@@ -144,6 +144,9 @@ impl Chip {
             settings: BTreeMap::new(),
             tap_frame_count: match device {
                 "LFCPNX-100" => 42,
+                // LIFCL-33: 2 TAP frame slots x 6 frames = 12
+                // (vs LIFCL-40/-17 with 4 TAP slots = 24)
+                "LIFCL-33" => 12,
                 _ => 24,
             }
         };
